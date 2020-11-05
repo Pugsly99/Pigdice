@@ -36,9 +36,21 @@ Player.prototype.diceRoll = function () {
   this.score += total;
 }
 
+$(document).ready(function () {
+  $("form#newPlayers").submit(function (event) {
+    event.preventDefault();
 
-//UI Logic
-let game = new Game();
-let (form#player1)= new Player((form#player1), 12);
-let player2 = new Player("Ryalnd", 2);
-game.addPlayer(newPlayer);
+    const inputPlayer1 = $("input#first").val();
+    const inputPlayer2 = $("input#second").val();
+    const inputPlayer3 = $("input#third").val();
+
+    let game = new Game();
+    let player1 = new Player(inputPlayer1, 0);
+    let player2 = new Player(inputPlayer2, 0);
+    let player3 = new Player(inputPlayer3, 0);
+    game.addPlayer(player1);
+    game.addPlayer(player2);
+    game.addPlayer(player3);
+    console.log(game);
+  });
+});
