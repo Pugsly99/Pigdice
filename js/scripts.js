@@ -19,21 +19,23 @@ Game.prototype.assignId = function () {
 function Player(name, score) {
   this.name = name;
   this.score = score;
+  this.roundTotal = 0;
 }
 
 Player.prototype.diceRoll = function () {
   let dice = Math.floor(Math.random() * 6) + 1;
-  let total = 0;
 
-  if (dice > 1) {
-    total += dice
-  } else if (dice === 1) {
-    total = 0;
-    //pass to next player
+  if (dice === 1) {
+    this.roundTotal = 0;
   }
-  //this.score += total;
-  //total = 0
-  this.score += total;
+  else if (dice !== 1)
+    this.roundTotal += dice;
+
+  //passbuttoin
+  //this.score += roundTotal;
+  //roundTotal = 0
+  //console.log(roundTotal); //total shows what the dice is
+  //console.log(score); //total score
 }
 
 $(document).ready(function () {
@@ -52,5 +54,16 @@ $(document).ready(function () {
     game.addPlayer(player2);
     game.addPlayer(player3);
     console.log(game);
+
+    $("button#dice").click(function () {
+      player1.diceRoll();
+      console.log(player1);
+    });
+
+    $("button#toScore").click(function () {
+      player1.score += player1.roundTotal
+      player1.roundTotal = 0
+      console.log(player1);
+    });
   });
 });
