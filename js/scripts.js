@@ -38,6 +38,20 @@ Player.prototype.diceRoll = function () {
   //console.log(score); //total score
 }
 
+let game = new Game();
+
+function showPlayer(scoresToDisplay) {
+  let displayGame = $(".test");
+  let htmlForPlayerInfo = "";
+  scoresToDisplay.players.forEach(function(player) {
+    htmlForPlayerInfo +=  player.id;
+  });
+  displayGame.html(htmlForPlayerInfo);
+
+
+
+}
+
 $(document).ready(function () {
   $("form#newPlayers").submit(function (event) {
     event.preventDefault();
@@ -45,8 +59,7 @@ $(document).ready(function () {
     const inputPlayer1 = $("input#first").val();
     const inputPlayer2 = $("input#second").val();
     const inputPlayer3 = $("input#third").val();
-
-    let game = new Game();
+ 
     let player1 = new Player(inputPlayer1, 0);
     let player2 = new Player(inputPlayer2, 0);
     let player3 = new Player(inputPlayer3, 0);
@@ -66,4 +79,6 @@ $(document).ready(function () {
       console.log(player1);
     });
   });
+
+  showPlayer(game);
 });

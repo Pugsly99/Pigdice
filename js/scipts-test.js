@@ -27,10 +27,11 @@
 //   total += dice;
 // } if else(dice = 1) {
 //   total = 0
-//   pass next player
+//   pass next player id
 // } if else(button pass) {
-//   player.score.push (total)
-//   pass to next player
+//   curent player ID.score.push (total)
+//   total = 0
+//   pass to next player id
 // }
 
 // dice = Math.floor(Math.random() * 6) + 1
